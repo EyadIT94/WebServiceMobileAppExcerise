@@ -23,7 +23,7 @@
   </ion-button>
 </ion-item> -->
 
-<ion-item-sliding *ngFor="let i of company | async">
+<ion-item-sliding *ngFor="let i of (company | async)">
   <ion-item-options side="start">
     <!-- <ion-item-option (click)="favorite(item)">Favorite</ion-item-option> -->
     <ion-item-option color="success" [routerLink]="['/company','update',i.companyId]">Update</ion-item-option>

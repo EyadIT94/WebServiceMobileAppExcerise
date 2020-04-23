@@ -16,19 +16,35 @@ export class CompanyPage implements OnInit {
    }
 
   ngOnInit() {
-    this.company = this.companyService.getData();
+    // this.getData();
     
   }
 
   ionViewWillEnter(){
     // this.company = this.companyService.getData();
+    this.getData();
   }
 
-  deleteCompany(id){
+  async deleteCompany(id){
     console.log(id);
-    this.companyService.deleteData(id);
-    this.ngOnInit();
+    this.companyService.deleteData(id).then(success =>{
+      this.company = null; 
+        this.getData();
+        console.log("Getting Data");
+      
+      
+    }).catch(err =>{
+      this.company = null;
+      this.getData();
+      console.log("Error");
+    })
+    
     // this.company = this.companyService.getData();
+  }
+
+  getData(){
+    this.company = null;
+    this.company = this.companyService.getData();
   }
 
 }

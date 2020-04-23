@@ -49,8 +49,10 @@ export class CompanyService {
     this.http.delete(this.url + "/delete/" + id, { observe: 'response', responseType: 'text' })
     .subscribe(success =>{
       this.presentToast("Deleted Successfully");
+      return "deleted";
     }, err =>{
       this.presentToast("Error in Delete");
+      return "Error";
     })
   }
 
